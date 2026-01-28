@@ -69,7 +69,7 @@ class Bar extends Model
             return [];
         }
 
-        return DB::transaction(function () use ($count) {
+        return DB::transaction(function () use ($count, $prefix) {
             $seriesStart = self::startNumberForPrefix($prefix);
             $last = static::query()
                 ->where('human_code_prefix', $prefix)
