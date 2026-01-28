@@ -75,7 +75,8 @@ class BarsGenerateCommand extends Command
             ]);
 
             $qrUrl = rtrim($baseUrl, '/') . '/q/' . $bar->public_id;
-            $fileName = $bar->public_id . '.' . $format;
+            $fileBaseName = $bar->human_code ?? $bar->public_id;
+            $fileName = $fileBaseName . '.' . $format;
             $filePath = $outputPath . DIRECTORY_SEPARATOR . $fileName;
 
             QrCode::format($format)->size(300)->generate($qrUrl, $filePath);
