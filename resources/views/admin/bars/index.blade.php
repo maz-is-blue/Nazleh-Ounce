@@ -30,6 +30,7 @@
     <table>
         <thead>
             <tr>
+                <th>Label ID</th>
                 <th>Public ID</th>
                 <th>Metal</th>
                 <th>Weight</th>
@@ -41,6 +42,7 @@
         <tbody>
             @foreach ($bars as $bar)
                 <tr>
+                    <td>{{ $bar->human_code ?? '—' }}</td>
                     <td>{{ $bar->public_id }}</td>
                     <td>{{ ucfirst($bar->metal_type) }}</td>
                     <td>{{ $bar->weight }}</td>

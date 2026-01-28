@@ -46,8 +46,11 @@ class AdminBarController extends Controller
             'purity' => ['nullable', 'string', 'max:50'],
         ]);
 
+        $humanCodeNumber = Bar::allocateHumanCodeNumbers(1)[0] ?? null;
+
         $bar = Bar::create([
             'public_id' => (string) Str::ulid(),
+            'human_code_number' => $humanCodeNumber,
             'metal_type' => $data['metal_type'],
             'weight' => $data['weight'],
             'purity' => $data['purity'] ?? null,
@@ -68,10 +71,13 @@ class AdminBarController extends Controller
             'purity' => ['nullable', 'string', 'max:50'],
         ]);
 
+        $humanCodeNumbers = Bar::allocateHumanCodeNumbers($data['count']);
+
         $bars = [];
         for ($i = 0; $i < $data['count']; $i++) {
             $bars[] = [
                 'public_id' => (string) Str::ulid(),
+                'human_code_number' => $humanCodeNumbers[$i] ?? null,
                 'metal_type' => $data['metal_type'],
                 'weight' => $data['weight'],
                 'purity' => $data['purity'] ?? null,

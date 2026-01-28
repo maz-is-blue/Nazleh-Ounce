@@ -2,6 +2,7 @@
 
 @section('content')
     <h2>Bar Details</h2>
+    <p><strong>Label ID:</strong> {{ $bar->human_code ?? '—' }}</p>
     <p><strong>Public ID:</strong> {{ $bar->public_id }}</p>
     <p><strong>Metal:</strong> {{ ucfirst($bar->metal_type) }}</p>
     <p><strong>Weight:</strong> {{ $bar->weight }} g</p>

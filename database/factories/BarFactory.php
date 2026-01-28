@@ -14,6 +14,7 @@ class BarFactory extends Factory
     {
         return [
             'public_id' => (string) Str::ulid(),
+            'human_code_number' => Bar::allocateHumanCodeNumbers(1)[0] ?? null,
             'metal_type' => $this->faker->randomElement(['gold', 'silver']),
             'weight' => 100.000,
             'purity' => '999.9',

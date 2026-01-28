@@ -54,6 +54,8 @@ class BarsGenerateCommand extends Command
         $outputPath = $this->resolveOutputPath($outputDir);
         $this->ensureOutputDirectory($outputDir, $outputPath);
 
+        $humanCodeNumbers = Bar::allocateHumanCodeNumbers($count);
+
         $csvPath = $outputPath . DIRECTORY_SEPARATOR . 'export.csv';
         $csvHandle = fopen($csvPath, 'w');
         fputcsv($csvHandle, ['public_id', 'qr_url', 'metal_type', 'weight', 'purity']);
@@ -61,6 +63,7 @@ class BarsGenerateCommand extends Command
         for ($i = 0; $i < $count; $i++) {
             $bar = Bar::create([
                 'public_id' => (string) Str::ulid(),
+                'human_code_number' => $humanCodeNumbers[$i] ?? null,
                 'metal_type' => $metal,
                 'weight' => $weight,
                 'purity' => $purity ?: null,
