@@ -12,11 +12,18 @@ class BarFactory extends Factory
 
     public function definition(): array
     {
+        $metalType = $this->faker->randomElement(['gold', 'silver']);
+        $weight = 100.000;
+        $humanCodePrefix = Bar::resolveHumanCodePrefix($metalType, $weight);
+
         return [
             'public_id' => (string) Str::ulid(),
-            'human_code_number' => Bar::allocateHumanCodeNumbers(1)[0] ?? null,
-            'metal_type' => $this->faker->randomElement(['gold', 'silver']),
-            'weight' => 100.000,
+            'human_code_number' => $humanCodePrefix
+                ? Bar::allocateHumanCodeNumbersForPrefix($humanCodePrefix, 1)[0] ?? null
+                : null,
+            'human_code_prefix' => $humanCodePrefix,
+            'metal_type' => $metalType,
+            'weight' => $weight,
             'purity' => '999.9',
             'status' => 'unsold',
             'owner_user_id' => null,

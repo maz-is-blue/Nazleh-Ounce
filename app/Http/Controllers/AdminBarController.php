@@ -46,11 +46,15 @@ class AdminBarController extends Controller
             'purity' => ['nullable', 'string', 'max:50'],
         ]);
 
-        $humanCodeNumber = Bar::allocateHumanCodeNumbers(1)[0] ?? null;
+        $humanCodePrefix = Bar::resolveHumanCodePrefix($data['metal_type'], $data['weight']);
+        $humanCodeNumber = $humanCodePrefix
+            ? Bar::allocateHumanCodeNumbersForPrefix($humanCodePrefix, 1)[0] ?? null
+            : null;
 
         $bar = Bar::create([
             'public_id' => (string) Str::ulid(),
             'human_code_number' => $humanCodeNumber,
+            'human_code_prefix' => $humanCodePrefix,
             'metal_type' => $data['metal_type'],
             'weight' => $data['weight'],
             'purity' => $data['purity'] ?? null,
@@ -71,13 +75,17 @@ class AdminBarController extends Controller
             'purity' => ['nullable', 'string', 'max:50'],
         ]);
 
-        $humanCodeNumbers = Bar::allocateHumanCodeNumbers($data['count']);
+        $humanCodePrefix = Bar::resolveHumanCodePrefix($data['metal_type'], $data['weight']);
+        $humanCodeNumbers = $humanCodePrefix
+            ? Bar::allocateHumanCodeNumbersForPrefix($humanCodePrefix, $data['count'])
+            : [];
 
         $bars = [];
         for ($i = 0; $i < $data['count']; $i++) {
             $bars[] = [
                 'public_id' => (string) Str::ulid(),
                 'human_code_number' => $humanCodeNumbers[$i] ?? null,
+                'human_code_prefix' => $humanCodePrefix,
                 'metal_type' => $data['metal_type'],
                 'weight' => $data['weight'],
                 'purity' => $data['purity'] ?? null,
