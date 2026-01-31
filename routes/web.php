@@ -18,6 +18,14 @@ Route::get('/', function () {
     return view('marketing.home');
 });
 
+Route::get('/heritage', function () {
+    return view('marketing.heritage');
+})->name('marketing.heritage');
+
+Route::get('/assay', function () {
+    return view('marketing.assay');
+})->name('marketing.assay');
+
 Route::middleware('throttle:public-bar')->group(function () {
     Route::get('/q/{public_id}', [PublicBarController::class, 'redirect'])->name('qr.redirect');
     Route::get('/bar/{public_id}', [PublicBarController::class, 'show'])->name('bar.show');

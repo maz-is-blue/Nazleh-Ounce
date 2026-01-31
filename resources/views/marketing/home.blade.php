@@ -14,7 +14,7 @@
 
         <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-700">
             <div id="site-nav" class="transition-all duration-700">
-                <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-2 flex items-center justify-between">
+                <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-6 flex items-center justify-between">
                     <a href="#hero" class="flex items-center gap-3 group">
                         <div class="flex flex-col">
                             <span class="text-xl tracking-[0.2em] uppercase text-white transition-colors duration-500 group-hover:text-primary"
@@ -45,6 +45,16 @@
                             Contact
                             <span class="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-500 group-hover:w-full"></span>
                         </a>
+                        <a href="{{ route('marketing.heritage') }}" class="relative text-sm tracking-[0.2em] uppercase text-white/70 transition-colors duration-500 hover:text-primary group"
+                           style="font-family: var(--font-body); font-weight: 400;">
+                            Heritage
+                            <span class="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-500 group-hover:w-full"></span>
+                        </a>
+                        <a href="{{ route('marketing.assay') }}" class="relative text-sm tracking-[0.2em] uppercase text-white/70 transition-colors duration-500 hover:text-primary group"
+                           style="font-family: var(--font-body); font-weight: 400;">
+                            Assay
+                            <span class="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-500 group-hover:w-full"></span>
+                        </a>
                     </div>
 
                     <div class="w-8 h-px bg-primary/30 hidden lg:block"></div>
@@ -52,23 +62,23 @@
             </div>
         </nav>
 
-        <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden pt-32 md:pt-36">
             <div class="absolute inset-0 opacity-5">
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent"></div>
             </div>
 
             <div class="relative z-10 flex flex-col items-center text-center px-6 md:px-12 max-w-5xl mx-auto">
-                <div class="mb-12 md:mb-16">
+                <div class="mb-12 md:mb-16 reveal-scale">
                     <div class="w-48 h-48 md:w-64 md:h-64 flex items-center justify-center">
                         <img
                             src="{{ asset('images/nazleh-monogram-light.png') }}"
                             alt="Nazleh Goldsmith Monogram"
-                            class="w-full h-full object-contain opacity-90 mt-24"
+                            class="w-full h-full object-contain opacity-90 mt-40"
                         />
                     </div>
                 </div>
 
-                <h1 class="mb-6 md:mb-8" style="font-family: var(--font-display);">
+                <h1 class="mb-6 md:mb-8 reveal" style="font-family: var(--font-display);">
                     <span class="block text-[3rem] md:text-[5rem] lg:text-[6.5rem] tracking-[0.15em] uppercase text-white" style="font-weight: 300; letter-spacing: 0.2em;">
                         NAZLEH
                     </span>
@@ -77,11 +87,11 @@
                     </span>
                 </h1>
 
-                <p class="text-lg md:text-xl tracking-[0.3em] uppercase text-white/70 mb-12 md:mb-16" style="font-family: var(--font-body); font-weight: 300;">
+                <p class="text-lg md:text-xl tracking-[0.3em] uppercase text-white/70 mb-12 md:mb-16 reveal" style="font-family: var(--font-body); font-weight: 300;">
                     Handcrafted Gold &amp; Silver Alloys
                 </p>
 
-                <div class="w-24 h-px bg-primary mb-12 md:mb-16"></div>
+                <div class="w-24 h-px bg-primary mb-12 md:mb-16 reveal-line"></div>
 
                 <a href="#collection"
                    class="group relative px-10 py-4 border border-primary/30 text-white tracking-[0.2em] uppercase transition-all duration-700 hover:border-primary hover:shadow-[0_0_30px_rgba(139,212,226,0.3)]"
@@ -100,7 +110,7 @@
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent opacity-30"></div>
 
             <div class="relative z-10 max-w-6xl mx-auto">
-                <div class="mb-16 md:mb-24">
+                <div class="mb-16 md:mb-24 reveal">
                     <div class="flex items-center gap-6 mb-8">
                         <div class="w-12 h-px bg-primary"></div>
                         <span class="text-sm tracking-[0.3em] uppercase text-primary" style="font-family: var(--font-body); font-weight: 400;">
@@ -109,7 +119,7 @@
                     </div>
                 </div>
 
-                <div class="mb-20 md:mb-32">
+                <div class="mb-20 md:mb-32 reveal">
                     <h2 class="text-4xl md:text-5xl lg:text-6xl leading-tight text-white mb-8" style="font-family: var(--font-display); font-weight: 300;">
                         Every bar tells a story<br />of precision and permanence
                     </h2>
@@ -119,7 +129,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
-                    <div class="group">
+                    <div class="group reveal">
                         <div class="w-16 h-px bg-primary/30 mb-8 transition-all duration-700 group-hover:w-24 group-hover:bg-primary group-hover:shadow-[0_0_20px_rgba(139,212,226,0.5)]"></div>
                         <h3 class="text-2xl md:text-3xl mb-4 text-white" style="font-family: var(--font-display); font-weight: 400;">
                             Craftsmanship
@@ -128,7 +138,7 @@
                             Meticulous attention to every detail, ensuring each alloy meets exacting specifications.
                         </p>
                     </div>
-                    <div class="group">
+                    <div class="group reveal">
                         <div class="w-16 h-px bg-primary/30 mb-8 transition-all duration-700 group-hover:w-24 group-hover:bg-primary group-hover:shadow-[0_0_20px_rgba(139,212,226,0.5)]"></div>
                         <h3 class="text-2xl md:text-3xl mb-4 text-white" style="font-family: var(--font-display); font-weight: 400;">
                             Purity
@@ -137,7 +147,7 @@
                             Only the finest materials, refined to investment-grade standards.
                         </p>
                     </div>
-                    <div class="group">
+                    <div class="group reveal">
                         <div class="w-16 h-px bg-primary/30 mb-8 transition-all duration-700 group-hover:w-24 group-hover:bg-primary group-hover:shadow-[0_0_20px_rgba(139,212,226,0.5)]"></div>
                         <h3 class="text-2xl md:text-3xl mb-4 text-white" style="font-family: var(--font-display); font-weight: 400;">
                             Trust
@@ -152,7 +162,7 @@
 
         <section id="collection" class="relative py-32 md:py-48 px-6 md:px-12">
             <div class="max-w-7xl mx-auto">
-                <div class="mb-20 md:mb-32">
+                <div class="mb-20 md:mb-32 reveal">
                     <div class="flex items-center gap-6 mb-8">
                         <div class="w-12 h-px bg-primary"></div>
                         <span class="text-sm tracking-[0.3em] uppercase text-primary" style="font-family: var(--font-body); font-weight: 400;">
@@ -207,7 +217,7 @@
                     @endphp
 
                     @foreach ($alloys as $alloy)
-                        <div class="group cursor-pointer">
+                        <div class="group cursor-pointer reveal">
                             <div class="relative aspect-[4/5] mb-6 overflow-hidden bg-muted/5">
                                 <img src="{{ $alloy['image'] }}" alt="{{ $alloy['title'] }}"
                                      class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
@@ -248,8 +258,8 @@
             </div>
 
             <div class="relative z-10 max-w-5xl mx-auto text-center">
-                <div class="w-32 h-px bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-16"></div>
-                <blockquote class="space-y-8 md:space-y-12">
+                <div class="w-32 h-px bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-16 reveal-line"></div>
+                <blockquote class="space-y-8 md:space-y-12 reveal">
                     <p class="text-3xl md:text-4xl lg:text-5xl text-white leading-relaxed" style="font-family: var(--font-display); font-weight: 300;">
                         "In an age of digital currencies and fleeting investments,
                         <span class="text-primary">gold and silver</span> remain the timeless guardians of wealth"
@@ -261,7 +271,7 @@
                         </cite>
                     </footer>
                 </blockquote>
-                <div class="w-32 h-px bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mt-16"></div>
+                <div class="w-32 h-px bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mt-16 reveal-line"></div>
             </div>
         </section>
 
@@ -269,7 +279,7 @@
             <div class="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-primary/5 opacity-30"></div>
 
             <div class="relative z-10 max-w-7xl mx-auto">
-                <div class="mb-20 md:mb-32 max-w-4xl mx-auto text-center">
+                <div class="mb-20 md:mb-32 max-w-4xl mx-auto text-center reveal">
                     <div class="flex items-center justify-center gap-6 mb-8">
                         <div class="w-12 h-px bg-primary"></div>
                         <span class="text-sm tracking-[0.3em] uppercase text-primary" style="font-family: var(--font-body); font-weight: 400;">
@@ -314,7 +324,7 @@
                     @endphp
 
                     @foreach ($features as $feature)
-                        <div class="group">
+                        <div class="group reveal">
                             <div class="mb-8 relative inline-block">
                                 <div class="absolute inset-0 bg-primary/20 blur-xl transition-all duration-700 group-hover:bg-primary/40"></div>
                                 <div class="relative w-16 h-16 flex items-center justify-center border border-primary/30 transition-all duration-700 group-hover:border-primary group-hover:shadow-[0_0_30px_rgba(139,212,226,0.3)]">
@@ -359,7 +369,7 @@
                     @endforeach
                 </div>
 
-                <div class="mt-24 md:mt-32 text-center">
+                <div class="mt-24 md:mt-32 text-center reveal">
                     <p class="text-white/70 mb-8 tracking-[0.15em] uppercase" style="font-family: var(--font-body); font-size: 0.875rem; font-weight: 400;">
                         Request Verification Documentation
                     </p>
@@ -374,7 +384,7 @@
 
         <footer id="contact" class="relative py-20 md:py-24 px-6 md:px-12 border-t border-primary/10">
             <div class="max-w-7xl mx-auto">
-                <div class="flex flex-col items-center mb-12">
+                <div class="flex flex-col items-center mb-12 reveal">
                     <div class="mb-8">
                         <img src="{{ asset('images/nazleh-monogram-dark.png') }}" alt="Nazleh Goldsmith" class="w-16 h-16 md:w-20 md:h-20 object-contain opacity-80">
                     </div>
@@ -389,9 +399,9 @@
                     </div>
                 </div>
 
-                <div class="w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent mb-12"></div>
+                <div class="w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent mb-12 reveal-line"></div>
 
-                <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8 reveal">
                     <nav class="flex flex-wrap items-center justify-center gap-8 md:gap-12">
                         <a href="#about" class="text-sm tracking-[0.2em] uppercase text-white/50 transition-colors duration-500 hover:text-primary" style="font-family: var(--font-body); font-weight: 400;">
                             About
@@ -412,7 +422,7 @@
                     </p>
                 </div>
 
-                <div class="mt-12 flex justify-center">
+                <div class="mt-12 flex justify-center reveal">
                     <div class="w-1 h-1 rounded-full bg-primary/50"></div>
                 </div>
             </div>
