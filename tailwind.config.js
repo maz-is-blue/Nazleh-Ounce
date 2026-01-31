@@ -13,6 +13,14 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                display: ['Cormorant Garamond', 'serif'],
+                body: ['Inter', 'sans-serif'],
+            },
+            colors: {
+                background: '#07202A',
+                foreground: '#ffffff',
+                primary: '#8BD4E2',
+                muted: '#0a2a38',
             },
         },
     },

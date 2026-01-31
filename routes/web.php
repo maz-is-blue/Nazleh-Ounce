@@ -15,7 +15,7 @@ RateLimiter::for('public-bar', function (Request $request) {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('marketing.home');
 });
 
 Route::middleware('throttle:public-bar')->group(function () {
