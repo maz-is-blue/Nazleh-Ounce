@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -18,6 +19,8 @@ class User extends Authenticatable
         'email',
         'password',
         'is_admin',
+        'phone',
+        'location',
     ];
 
     protected $hidden = [
@@ -30,4 +33,9 @@ class User extends Authenticatable
         'password' => 'hashed',
         'is_admin' => 'boolean',
     ];
+
+    public function bars(): HasMany
+    {
+        return $this->hasMany(Bar::class, 'owner_user_id');
+    }
 }

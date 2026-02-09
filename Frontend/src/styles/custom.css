@@ -1,0 +1,56 @@
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide default cursor on desktop for custom cursor */
+@media (min-width: 768px) {
+  body {
+    cursor: none;
+  }
+
+  a, button {
+    cursor: none;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #07202A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8BD4E2;
+  opacity: 0.3;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8BD4E2;
+  opacity: 0.5;
+}
+
+/* Selection color */
+::selection {
+  background: #8BD4E2;
+  color: #07202A;
+}
+
+::-moz-selection {
+  background: #8BD4E2;
+  color: #07202A;
+}
+
+/* Prevent text selection on headings */
+h1, h2, h3 {
+  user-select: none;
+}
+
+/* Anti-aliasing for smoother text */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

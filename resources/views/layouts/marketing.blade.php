@@ -3,48 +3,83 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title ?? "Nazleh's Goldsmith" }}</title>
+    <title>{{ $title ?? 'Nazleh Ounce' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-background text-white">
-    @yield('content')
+<body class="bg-background text-white overflow-x-hidden" style="font-family: var(--font-body);">
+    <div class="page-loader">
+        <div class="flex flex-col items-center">
+            <div class="mb-8">
+                <div class="w-20 h-20 flex items-center justify-center border border-primary/30 relative">
+                    <div class="absolute inset-0 border-t border-primary animate-spin" style="animation-duration: 3s;"></div>
+                    <span class="text-4xl text-primary" style="font-family: var(--font-display); font-weight: 300;">N</span>
+                </div>
+            </div>
+            <p class="text-sm tracking-[0.3em] uppercase text-white/50" style="font-family: var(--font-body); font-weight: 300;">Loading</p>
+        </div>
+    </div>
 
-    <script>
-        (() => {
-            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            if (!prefersReducedMotion) {
-                document.body.classList.add('page-ready');
-            } else {
-                document.body.style.opacity = '1';
-            }
+    <div class="cursor-outer hidden md:block"></div>
+    <div class="cursor-inner hidden md:block"></div>
 
-            const nav = document.getElementById('site-nav');
-            if (nav) {
-                const update = () => {
-                    if (window.scrollY > 100) {
-                        nav.classList.add('bg-background/80', 'backdrop-blur-xl', 'border-b', 'border-primary/10');
-                    } else {
-                        nav.classList.remove('bg-background/80', 'backdrop-blur-xl', 'border-b', 'border-primary/10');
-                    }
-                };
-                update();
-                window.addEventListener('scroll', update, { passive: true });
-            }
+    <div class="fixed inset-0 -z-10">
+        <div class="parallax-layer absolute inset-0">
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[100px]"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[100px]"></div>
+            <div class="absolute inset-0 opacity-[0.02]" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%238BD4E2\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        </div>
+    </div>
 
-            const revealElements = document.querySelectorAll('.reveal, .reveal-scale, .reveal-line');
-            if (revealElements.length === 0) return;
+    <nav id="site-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-700">
+        <div class="transition-all duration-700 bg-background/40 backdrop-blur-xl">
+            <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-4 flex items-center justify-between">
+                <a href="{{ url('/') }}" class="flex items-center gap-3 group">
+                    <span class="text-2xl tracking-[0.2em] uppercase text-white transition-colors duration-500 group-hover:text-primary" style="font-family: var(--font-display); font-weight: 400;">
+                        NAZLEH OUNCE
+                    </span>
+                </a>
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
+                <div class="hidden md:flex items-center gap-10">
+                    <a href="{{ url('/') }}" class="relative text-base tracking-[0.2em] uppercase text-white/70 transition-colors duration-500 hover:text-primary group" style="font-family: var(--font-body); font-weight: 400;">Home
+                        <span class="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-500 group-hover:w-full"></span>
+                    </a>
+                    <a href="{{ url('/about') }}" class="relative text-base tracking-[0.2em] uppercase text-white/70 transition-colors duration-500 hover:text-primary group" style="font-family: var(--font-body); font-weight: 400;">About
+                        <span class="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-500 group-hover:w-full"></span>
+                    </a>
+                    <a href="{{ url('/collection') }}" class="relative text-base tracking-[0.2em] uppercase text-white/70 transition-colors duration-500 hover:text-primary group" style="font-family: var(--font-body); font-weight: 400;">Collection
+                        <span class="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-500 group-hover:w-full"></span>
+                    </a>
+                    <a href="{{ url('/verification') }}" class="relative text-base tracking-[0.2em] uppercase text-white/70 transition-colors duration-500 hover:text-primary group" style="font-family: var(--font-body); font-weight: 400;">Verification
+                        <span class="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-500 group-hover:w-full"></span>
+                    </a>
+                    <a href="{{ url('/contact') }}" class="relative text-base tracking-[0.2em] uppercase text-white/70 transition-colors duration-500 hover:text-primary group" style="font-family: var(--font-body); font-weight: 400;">Contact
+                        <span class="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-500 group-hover:w-full"></span>
+                    </a>
+                </div>
 
-            revealElements.forEach((el) => observer.observe(el));
-        })();
-    </script>
+                <div class="flex items-center gap-4">
+                    @auth
+                        <a href="{{ url('/account') }}" class="flex items-center gap-2 text-sm tracking-[0.2em] uppercase text-white/70 transition-colors duration-500 hover:text-primary group" style="font-family: var(--font-body); font-weight: 400;">
+                            <span class="hidden lg:inline">Account</span>
+                        </a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="flex items-center gap-2 px-4 py-2 border border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-500 text-primary text-sm tracking-wider">
+                                Sign Out
+                            </button>
+                        </form>
+                    @else
+                        <a href="{{ route('login') }}" class="flex items-center gap-2 px-4 py-2 border border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-500 text-primary text-sm tracking-wider">
+                            Sign In
+                        </a>
+                    @endauth
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="min-h-screen bg-background">
+        @yield('content')
+    </main>
 </body>
 </html>

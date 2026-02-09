@@ -29,6 +29,22 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        $user = $request->user();
+        $redirectTo = $request->input('redirect_to');
+        if ($redirectTo) {
+            if (!$user || !$user->is_admin) {
+                Auth::guard('web')->logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+
+                return redirect()
+                    ->back()
+                    ->withErrors(['email' => 'Admin access only.']);
+            }
+
+            return redirect()->to($redirectTo);
+        }
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
