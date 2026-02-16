@@ -231,6 +231,46 @@ const setupAdminTabs = () => {
   if (initial) activate(initial);
 };
 
+const setupMobileMenu = () => {
+  const menu = document.querySelector('[data-mobile-menu]');
+  const overlay = document.querySelector('[data-mobile-overlay]');
+  const toggles = Array.from(document.querySelectorAll('[data-mobile-toggle]'));
+  if (!menu || !overlay || !toggles.length) return;
+
+  const openMenu = () => {
+    menu.classList.remove('translate-x-full');
+    menu.classList.add('translate-x-0');
+    overlay.classList.remove('opacity-0', 'pointer-events-none');
+    overlay.classList.add('opacity-100');
+    document.body.classList.add('overflow-hidden');
+  };
+
+  const closeMenu = () => {
+    menu.classList.add('translate-x-full');
+    menu.classList.remove('translate-x-0');
+    overlay.classList.add('opacity-0', 'pointer-events-none');
+    overlay.classList.remove('opacity-100');
+    document.body.classList.remove('overflow-hidden');
+  };
+
+  toggles.forEach((toggle) => toggle.addEventListener('click', () => {
+    if (menu.classList.contains('translate-x-full')) {
+      openMenu();
+    } else {
+      closeMenu();
+    }
+  }));
+
+  overlay.addEventListener('click', closeMenu);
+  menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) {
+      closeMenu();
+    }
+  });
+};
+
 window.addEventListener('DOMContentLoaded', () => {
   setupPageLoader();
   setupNav();
@@ -242,4 +282,5 @@ window.addEventListener('DOMContentLoaded', () => {
   setupPasswordToggles();
   setupVerificationSteps();
   setupAdminTabs();
+  setupMobileMenu();
 });

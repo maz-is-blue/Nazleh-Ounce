@@ -240,7 +240,7 @@ Route::middleware('throttle:public-bar')->group(function () {
     Route::get('/owner/{user}', [PublicOwnerController::class, 'show'])->name('owner.show');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/account', function () {
         $user = request()->user();
         $bars = $user->bars()

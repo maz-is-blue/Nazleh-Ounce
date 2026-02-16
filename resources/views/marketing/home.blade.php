@@ -9,7 +9,7 @@
         <div class="relative z-10 flex flex-col items-center text-center px-6 md:px-12 max-w-5xl mx-auto">
             <div class="mb-12 md:mb-16 mt-28 md:mt-36 reveal-scale" data-reveal>
                 <div class="w-48 h-48 md:w-64 md:h-64 flex items-center justify-center">
-                    <img src="{{ asset('images/nazleh/monogram-light.png') }}" alt="Nazleh Ounce Monogram" class="w-full h-full object-contain opacity-90 mt-24" />
+                    <img src="{{ asset('images/nazleh/monogram-light.png') }}" alt="Nazleh Ounce Monogram" class="w-full h-full object-contain opacity-90 mt-40" />
                 </div>
             </div>
 

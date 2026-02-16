@@ -20,6 +20,9 @@
                 <p><strong>Metal:</strong> {{ ucfirst($bar->metal_type) }}</p>
                 <p><strong>Weight:</strong> {{ $bar->weight }} g</p>
                 <p><strong>Purity:</strong> {{ $bar->purity ?? '—' }}</p>
+                <p><strong>Registered Email:</strong> {{ $user->email }}</p>
+                <p><strong>Registered Phone:</strong> {{ $user->phone ?? '—' }}</p>
+                <p><strong>Registered Location:</strong> {{ $user->location ?? '—' }}</p>
                 <p>You can verify your bar here:</p>
                 <p><a href="{{ route('bar.show', $bar->public_id) }}">View Verification</a></p>
             </td>

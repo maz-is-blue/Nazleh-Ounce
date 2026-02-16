@@ -73,10 +73,40 @@
                             Sign In
                         </a>
                     @endauth
+                    <button type="button" data-mobile-toggle class="md:hidden flex items-center justify-center w-10 h-10 border border-primary/30 text-primary hover:border-primary/60 hover:bg-primary/10 transition-all duration-500" aria-label="Open menu">
+                        <span class="block w-5 h-px bg-current relative">
+                            <span class="absolute -top-2 left-0 w-5 h-px bg-current"></span>
+                            <span class="absolute top-2 left-0 w-5 h-px bg-current"></span>
+                        </span>
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
+
+    <div data-mobile-overlay class="fixed inset-0 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300 z-40 md:hidden"></div>
+    <aside data-mobile-menu class="fixed top-0 right-0 h-full w-72 bg-background/95 backdrop-blur-xl border-l border-primary/20 transform translate-x-full transition-transform duration-500 z-50 md:hidden">
+        <div class="flex items-center justify-between px-6 py-5 border-b border-primary/20">
+            <span class="text-sm tracking-[0.3em] uppercase text-primary">Menu</span>
+            <button type="button" data-mobile-toggle class="text-primary text-xl">×</button>
+        </div>
+        <div class="flex flex-col gap-6 px-6 py-8">
+            <a href="{{ url('/') }}" class="text-base tracking-[0.2em] uppercase text-white/70 hover:text-primary transition-colors duration-300">Home</a>
+            <a href="{{ url('/about') }}" class="text-base tracking-[0.2em] uppercase text-white/70 hover:text-primary transition-colors duration-300">About</a>
+            <a href="{{ url('/collection') }}" class="text-base tracking-[0.2em] uppercase text-white/70 hover:text-primary transition-colors duration-300">Collection</a>
+            <a href="{{ url('/verification') }}" class="text-base tracking-[0.2em] uppercase text-white/70 hover:text-primary transition-colors duration-300">Verification</a>
+            <a href="{{ url('/contact') }}" class="text-base tracking-[0.2em] uppercase text-white/70 hover:text-primary transition-colors duration-300">Contact</a>
+            @auth
+                <a href="{{ url('/account') }}" class="text-base tracking-[0.2em] uppercase text-white/70 hover:text-primary transition-colors duration-300">Account</a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="w-full text-left text-base tracking-[0.2em] uppercase text-primary">Sign Out</button>
+                </form>
+            @else
+                <a href="{{ route('login') }}" class="text-base tracking-[0.2em] uppercase text-primary">Sign In</a>
+            @endauth
+        </div>
+    </aside>
 
     <main class="min-h-screen bg-background">
         @yield('content')
