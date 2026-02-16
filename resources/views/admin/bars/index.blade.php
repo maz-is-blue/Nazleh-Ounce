@@ -40,7 +40,8 @@
                 </form>
             </div>
 
-                        <div class="backdrop-blur-sm bg-background/40 border border-primary/20 p-6 mb-8 reveal" data-reveal data-delay="60">
+            @if ($showSeedPool)
+            <div class="backdrop-blur-sm bg-background/40 border border-primary/20 p-6 mb-8 reveal" data-reveal data-delay="60">
                 <h3 class="font-display text-xl text-primary mb-2">Seed Existing QR Pool</h3>
                 <p class="text-sm text-foreground/60 mb-4">Create placeholder bars for already-generated QRs (e.g. H000666-H000865).</p>
                 <form method="post" action="{{ route('admin.bars.seedPool') }}" class="grid grid-cols-1 md:grid-cols-6 gap-4">
@@ -57,7 +58,9 @@
                     <button type="submit" class="md:col-span-6 px-6 py-3 bg-primary/10 border border-primary/40 hover:bg-primary/20 hover:border-primary/60 transition-all duration-500 text-primary tracking-wider">Seed Pool</button>
                 </form>
             </div>
-<div class="backdrop-blur-sm bg-background/40 border border-primary/20 p-6 mb-8 reveal" data-reveal data-delay="80">
+            @endif
+
+            <div class="backdrop-blur-sm bg-background/40 border border-primary/20 p-6 mb-8 reveal" data-reveal data-delay="80">
                 <h3 class="font-display text-xl text-primary mb-2">Assign & Create Bars</h3>
                 <p class="text-sm text-foreground/60 mb-4">Choose existing QR or create a new QR. Silver defaults to the H series. Gold uses its own series.</p>
                 <form method="post" action="{{ route('admin.bars.assignFlow') }}" id="bar-assignment-form" class="grid grid-cols-1 gap-6">
@@ -235,6 +238,10 @@
         </div>
     </div>
 @endsection
+
+
+
+
 
 
 

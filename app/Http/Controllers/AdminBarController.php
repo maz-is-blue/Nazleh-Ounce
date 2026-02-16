@@ -47,6 +47,7 @@ class AdminBarController extends Controller
         $newSerials = [];
         $existingNumbers = [];
         $newNumbers = [];
+        $showSeedPool = false;
         foreach ($prefixes as $prefix) {
             $nextExisting = Bar::nextUnassignedFromPool($prefix);
             $existingNumbers[$prefix] = $nextExisting?->human_code_number;
@@ -55,6 +56,25 @@ class AdminBarController extends Controller
                 ? Bar::formatHumanCode($prefix, $existingNumbers[$prefix])
                 : null;
             $newSerials[$prefix] = Bar::formatHumanCode($prefix, $newNumbers[$prefix]);
+
+            $totalForPrefix = Bar::query()
+                ->where('human_code_prefix', $prefix)
+                ->whereNotNull('human_code_number')
+                ->count();
+
+            $unassignedForPrefix = Bar::query()
+                ->where('human_code_prefix', $prefix)
+                ->whereNotNull('human_code_number')
+                ->whereNull('owner_user_id')
+                ->where(function ($query) {
+                    $query->whereNull('status')
+                        ->orWhere('status', 'unsold');
+                })
+                ->count();
+
+            if ($totalForPrefix === 0 || $unassignedForPrefix > 0) {
+                $showSeedPool = true;
+            }
         }
 
         return view('admin.bars.index', [
@@ -66,6 +86,7 @@ class AdminBarController extends Controller
             'newSerials' => $newSerials,
             'existingNumbers' => $existingNumbers,
             'newNumbers' => $newNumbers,
+            'showSeedPool' => $showSeedPool,
         ]);
     }
 
