@@ -246,6 +246,79 @@
                             <label class="block text-sm tracking-wide text-foreground/60 mb-2 uppercase">Mission Text</label>
                             <input type="text" name="content[about][missionText]" value="{{ $content['about']['missionText'] }}" class="w-full bg-background/60 border border-primary/30 px-4 py-3 text-foreground" />
                         </div>
+                        <div class="md:col-span-2 border border-primary/20 p-5 space-y-5">
+                            <p class="text-sm tracking-wide text-primary uppercase">About Mission Items</p>
+                            @foreach ($content['about']['missionItems'] as $index => $item)
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border border-primary/10 p-4">
+                                    <div>
+                                        <label class="block text-xs tracking-wide text-foreground/60 mb-2 uppercase">Mission Item {{ $index + 1 }} Title</label>
+                                        <input type="text" name="content[about][missionItems][{{ $index }}][title]" value="{{ $item['title'] }}" class="w-full bg-background/60 border border-primary/30 px-4 py-3 text-foreground" />
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs tracking-wide text-foreground/60 mb-2 uppercase">Mission Item {{ $index + 1 }} Description</label>
+                                        <textarea rows="3" name="content[about][missionItems][{{ $index }}][description]" class="w-full bg-background/60 border border-primary/30 px-4 py-3 text-foreground resize-none">{{ $item['description'] }}</textarea>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="md:col-span-2 border border-primary/20 p-5 space-y-5">
+                            <p class="text-sm tracking-wide text-primary uppercase">About Philosophy Section</p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-xs tracking-wide text-foreground/60 mb-2 uppercase">Section Label</label>
+                                    <input type="text" name="content[about][philosophySection][label]" value="{{ $content['about']['philosophySection']['label'] }}" class="w-full bg-background/60 border border-primary/30 px-4 py-3 text-foreground" />
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label class="block text-xs tracking-wide text-foreground/60 mb-2 uppercase">Section Headline</label>
+                                    <input type="text" name="content[about][philosophySection][headline]" value="{{ $content['about']['philosophySection']['headline'] }}" class="w-full bg-background/60 border border-primary/30 px-4 py-3 text-foreground" />
+                                </div>
+                                <div class="md:col-span-3">
+                                    <label class="block text-xs tracking-wide text-foreground/60 mb-2 uppercase">Section Description</label>
+                                    <textarea rows="3" name="content[about][philosophySection][description]" class="w-full bg-background/60 border border-primary/30 px-4 py-3 text-foreground resize-none">{{ $content['about']['philosophySection']['description'] }}</textarea>
+                                </div>
+                            </div>
+                            @foreach ($content['about']['philosophySection']['values'] as $index => $value)
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border border-primary/10 p-4">
+                                    <div>
+                                        <label class="block text-xs tracking-wide text-foreground/60 mb-2 uppercase">Value {{ $index + 1 }} Title</label>
+                                        <input type="text" name="content[about][philosophySection][values][{{ $index }}][title]" value="{{ $value['title'] }}" class="w-full bg-background/60 border border-primary/30 px-4 py-3 text-foreground" />
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs tracking-wide text-foreground/60 mb-2 uppercase">Value {{ $index + 1 }} Description</label>
+                                        <textarea rows="3" name="content[about][philosophySection][values][{{ $index }}][description]" class="w-full bg-background/60 border border-primary/30 px-4 py-3 text-foreground resize-none">{{ $value['description'] }}</textarea>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="md:col-span-2 border border-primary/20 p-5 space-y-5">
+                            <p class="text-sm tracking-wide text-primary uppercase">About Timeline</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs tracking-wide text-foreground/60 mb-2 uppercase">Timeline Label</label>
+                                    <input type="text" name="content[about][timeline][label]" value="{{ $content['about']['timeline']['label'] }}" class="w-full bg-background/60 border border-primary/30 px-4 py-3 text-foreground" />
+                                </div>
+                                <div>
+                                    <label class="block text-xs tracking-wide text-foreground/60 mb-2 uppercase">Timeline Title</label>
+                                    <input type="text" name="content[about][timeline][title]" value="{{ $content['about']['timeline']['title'] }}" class="w-full bg-background/60 border border-primary/30 px-4 py-3 text-foreground" />
+                                </div>
+                            </div>
+                            @foreach ($content['about']['timeline']['events'] as $index => $event)
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border border-primary/10 p-4">
+                                    <div>
+                                        <label class="block text-xs tracking-wide text-foreground/60 mb-2 uppercase">Event {{ $index + 1 }} Year</label>
+                                        <input type="text" name="content[about][timeline][events][{{ $index }}][year]" value="{{ $event['year'] }}" class="w-full bg-background/60 border border-primary/30 px-4 py-3 text-foreground" />
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs tracking-wide text-foreground/60 mb-2 uppercase">Event {{ $index + 1 }} Title</label>
+                                        <input type="text" name="content[about][timeline][events][{{ $index }}][title]" value="{{ $event['title'] }}" class="w-full bg-background/60 border border-primary/30 px-4 py-3 text-foreground" />
+                                    </div>
+                                    <div class="md:col-span-3">
+                                        <label class="block text-xs tracking-wide text-foreground/60 mb-2 uppercase">Event {{ $index + 1 }} Description</label>
+                                        <textarea rows="3" name="content[about][timeline][events][{{ $index }}][description]" class="w-full bg-background/60 border border-primary/30 px-4 py-3 text-foreground resize-none">{{ $event['description'] }}</textarea>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
 
                         <div>
                             <label class="block text-sm tracking-wide text-foreground/60 mb-2 uppercase">Collection Hero Title</label>

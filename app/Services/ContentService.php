@@ -18,6 +18,74 @@ class ContentService
             'description' => 'Founded on principles of authenticity and trust, Nazleh Ounce represents the pinnacle of precious metal craftsmanship.',
             'missionTitle' => 'Our Mission',
             'missionText' => 'To preserve the timeless value of precious metals through uncompromising quality and transparent verification.',
+            'missionItems' => [
+                [
+                    'title' => 'Certified Precious Metal Alloys',
+                    'description' => 'Each bar and bullion piece is meticulously crafted from the finest gold and silver alloys, meeting international purity standards. Our collection ranges from classic 24K gold to sophisticated silver compositions, each authenticated and documented.',
+                ],
+                [
+                    'title' => 'Advanced QR Verification System',
+                    'description' => 'Every piece features our proprietary QR verification technology, providing instant access to complete provenance, certification details, and authenticity documentation. This system ensures absolute transparency and peace of mind.',
+                ],
+                [
+                    'title' => 'White Glove Service',
+                    'description' => 'From private consultations to secure delivery, we provide a seamless experience for collectors and institutions. Our team offers expert guidance on portfolio diversification, market insights, and long-term wealth preservation strategies.',
+                ],
+                [
+                    'title' => 'Legacy Investments',
+                    'description' => 'Beyond transactions, we facilitate generational wealth transfer and long-term value preservation. Our precious metals are designed to be heirlooms, investments that transcend time and economic cycles.',
+                ],
+            ],
+            'philosophySection' => [
+                'label' => 'Philosophy',
+                'headline' => 'Every bar tells a story of precision and permanence',
+                'description' => 'We craft gold and silver alloys with an unwavering commitment to purity, authenticity, and long-term value. Each piece is handcrafted to meet the highest standards of excellence.',
+                'values' => [
+                    [
+                        'title' => 'Craftsmanship',
+                        'description' => 'Meticulous attention to every detail, ensuring each alloy meets exacting specifications.',
+                    ],
+                    [
+                        'title' => 'Purity',
+                        'description' => 'Only the finest materials, refined to investment-grade standards.',
+                    ],
+                    [
+                        'title' => 'Trust',
+                        'description' => 'Complete transparency and verification for every piece we create.',
+                    ],
+                ],
+            ],
+            'timeline' => [
+                'label' => 'Our Journey',
+                'title' => 'Milestones of Excellence',
+                'events' => [
+                    [
+                        'year' => '2018',
+                        'title' => 'Foundation',
+                        'description' => 'NAZLEH OUNCE was founded with a vision to revolutionize precious metal authentication and trading standards.',
+                    ],
+                    [
+                        'year' => '2019',
+                        'title' => 'QR Verification System',
+                        'description' => 'Launched our proprietary QR verification technology, ensuring complete traceability and transparency.',
+                    ],
+                    [
+                        'year' => '2021',
+                        'title' => 'International Expansion',
+                        'description' => 'Expanded operations to serve collectors and institutions across the Middle East and Europe.',
+                    ],
+                    [
+                        'year' => '2023',
+                        'title' => 'Certification Excellence',
+                        'description' => 'Achieved highest industry certifications for purity standards and sustainable sourcing practices.',
+                    ],
+                    [
+                        'year' => '2026',
+                        'title' => 'Future of Authenticity',
+                        'description' => 'Leading the industry in blockchain integration and advanced metallurgical verification methods.',
+                    ],
+                ],
+            ],
         ],
         'collection' => [
             'heroTitle' => 'Premium Alloys',
@@ -55,7 +123,7 @@ class ContentService
 
         return [
             'hero' => array_merge(self::DEFAULTS['hero'], $stored['hero'] ?? []),
-            'about' => array_merge(self::DEFAULTS['about'], $stored['about'] ?? []),
+            'about' => $this->mergeRecursive(self::DEFAULTS['about'], $stored['about'] ?? []),
             'collection' => array_merge(self::DEFAULTS['collection'], $stored['collection'] ?? []),
             'philosophy' => array_merge(self::DEFAULTS['philosophy'], $stored['philosophy'] ?? []),
             'verification' => array_merge(self::DEFAULTS['verification'], $stored['verification'] ?? []),
@@ -70,5 +138,10 @@ class ContentService
             ['key' => 'website_content'],
             ['data' => $content]
         );
+    }
+
+    private function mergeRecursive(array $defaults, array $stored): array
+    {
+        return array_replace_recursive($defaults, $stored);
     }
 }
