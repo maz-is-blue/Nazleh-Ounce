@@ -39,7 +39,7 @@
                         <label class="block text-sm mb-2 tracking-wide text-foreground/80">PASSWORD</label>
                         <div class="relative">
                             <span class="absolute left-4 top-1/2 -translate-y-1/2 text-primary/50">*</span>
-                            <input id="register_password" type="password" name="password" required autocomplete="new-password" class="w-full bg-background/60 border border-primary/30 px-12 py-3 focus:outline-none focus:border-primary/60 transition-colors duration-500 text-foreground placeholder:text-foreground/30" placeholder="Minimum 6 characters" />
+                            <input id="register_password" type="password" name="password" required autocomplete="new-password" class="w-full bg-background/60 border border-primary/30 px-12 py-3 focus:outline-none focus:border-primary/60 transition-colors duration-500 text-foreground placeholder:text-foreground/30" placeholder="Minimum 8 characters" />
                             <button type="button" data-toggle-password="register_password" class="absolute right-4 top-1/2 -translate-y-1/2 text-primary/50 hover:text-primary transition-colors duration-300">
                                 Show
                             </button>

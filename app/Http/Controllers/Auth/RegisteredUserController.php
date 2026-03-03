@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Throwable;
 
 class RegisteredUserController extends Controller
 {
@@ -42,10 +43,18 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        event(new Registered($user));
-
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        try {
+            event(new Registered($user));
+        } catch (Throwable $e) {
+            report($e);
+
+            return redirect()
+                ->route('verification.notice')
+                ->with('status', 'account-created-email-failed');
+        }
+
+        return redirect()->route('verification.notice');
     }
 }
