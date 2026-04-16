@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use App\Mail\BarAssignedMail;
@@ -173,6 +174,8 @@ class AdminBarController extends Controller
                 ->withErrors(['bar' => 'Bar is already sold. Use force reassign to override.']);
         }
 
+        $isNewUser = !User::where('email', $data['buyer_email'])->exists();
+
         DB::transaction(function () use ($data, $bar) {
             $this->assignBarToUser($bar, $data);
         });
@@ -181,7 +184,12 @@ class AdminBarController extends Controller
             $bar->refresh();
             $user = User::where('email', $data['buyer_email'])->first();
             if ($user) {
-                Mail::to($user->email)->send(new BarAssignedMail($bar, $user));
+                $setupUrl = null;
+                if ($isNewUser) {
+                    $token = Password::createToken($user);
+                    $setupUrl = route('password.reset', ['token' => $token, 'email' => $user->email]);
+                }
+                Mail::to($user->email)->send(new BarAssignedMail($bar, $user, $setupUrl));
             }
         } catch (\Throwable $e) {
             report($e);
@@ -206,6 +214,7 @@ class AdminBarController extends Controller
         $prefixValue = $request->string('prefix')->trim()->upper()->toString();
         $prefix = $prefixValue !== '' ? $prefixValue : null;
         $assignedBar = null;
+        $isNewUser = !User::where('email', $data['buyer_email'])->exists();
 
         DB::transaction(function () use ($data, $prefix, &$assignedBar) {
             $bar = Bar::nextUnassignedFromPool($prefix);
@@ -227,7 +236,12 @@ class AdminBarController extends Controller
             $assignedBar->refresh();
             $user = User::where('email', $data['buyer_email'])->first();
             if ($user) {
-                Mail::to($user->email)->send(new BarAssignedMail($assignedBar, $user));
+                $setupUrl = null;
+                if ($isNewUser) {
+                    $token = Password::createToken($user);
+                    $setupUrl = route('password.reset', ['token' => $token, 'email' => $user->email]);
+                }
+                Mail::to($user->email)->send(new BarAssignedMail($assignedBar, $user, $setupUrl));
             }
         } catch (\Throwable $e) {
             report($e);
@@ -255,6 +269,15 @@ class AdminBarController extends Controller
             'bars.*.purity' => ['nullable', 'string', 'max:50'],
         ]);
 
+        foreach ($data['bars'] as $index => $barData) {
+            if (($barData['mode'] ?? null) === 'new' && empty($barData['weight'])) {
+                return redirect()->back()->withErrors([
+                    "bars.{$index}.weight" => 'Weight is required when creating a new QR.',
+                ])->withInput();
+            }
+        }
+
+        $isNewUser = !User::where('email', $data['buyer_email'])->exists();
         $assignedBars = [];
 
         try {
@@ -264,6 +287,7 @@ class AdminBarController extends Controller
                     [
                         'name' => $data['buyer_name'],
                         'password' => bcrypt(Str::random(32)),
+                        'email_verified_at' => now(),
                     ]
                 );
 
@@ -329,8 +353,13 @@ class AdminBarController extends Controller
         try {
             $user = User::where('email', $data['buyer_email'])->first();
             if ($user) {
+                $setupUrl = null;
+                if ($isNewUser) {
+                    $token = Password::createToken($user);
+                    $setupUrl = route('password.reset', ['token' => $token, 'email' => $user->email]);
+                }
                 foreach ($assignedBars as $bar) {
-                    Mail::to($user->email)->send(new BarAssignedMail($bar, $user));
+                    Mail::to($user->email)->send(new BarAssignedMail($bar, $user, $setupUrl));
                 }
             }
         } catch (\Throwable $e) {
@@ -349,7 +378,7 @@ class AdminBarController extends Controller
     {
         $user = User::firstOrCreate(
             ['email' => $data['buyer_email']],
-            ['name' => $data['buyer_name'], 'password' => bcrypt(Str::random(32))]
+            ['name' => $data['buyer_name'], 'password' => bcrypt(Str::random(32)), 'email_verified_at' => now()]
         );
 
         $fromUserId = $bar->owner_user_id;

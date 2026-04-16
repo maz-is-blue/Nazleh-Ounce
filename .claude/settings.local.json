@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/xampp/php/**)",
+      "Bash(/c/xampp/php/php.exe --version)"
+    ]
+  }
+}

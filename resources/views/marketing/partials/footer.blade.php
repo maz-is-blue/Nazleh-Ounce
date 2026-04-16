@@ -24,7 +24,10 @@
                 <a href="{{ url('/verification') }}" class="text-sm tracking-[0.2em] uppercase text-white/50 transition-colors duration-500 hover:text-primary" style="font-family: var(--font-body); font-weight: 400;">Verification</a>
                 <a href="{{ url('/contact') }}" class="text-sm tracking-[0.2em] uppercase text-white/50 transition-colors duration-500 hover:text-primary" style="font-family: var(--font-body); font-weight: 400;">Contact</a>
             </nav>
-            <p class="text-sm text-white/30" style="font-family: var(--font-body); font-weight: 300;">{{ $content['footer']['copyright'] }}</p>
+            <div class="text-sm text-white/30 text-center md:text-right" style="font-family: var(--font-body); font-weight: 300;">
+                <div>{{ $content['footer']['copyright'] }}</div>
+                <div class="text-xs text-white/30 mt-2">Data source: GoldPriceZ.com</div>
+            </div>
         </div>
 
         <div class="mt-12 flex justify-center reveal-fade" data-reveal>

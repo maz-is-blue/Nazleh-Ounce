@@ -26,7 +26,7 @@
                     </div>
                     <div>
                         <p class="text-xs tracking-[0.3em] uppercase text-white/40 mb-2">Purity</p>
-                        <p class="text-white/90">{{ $bar->purity ?? '—' }}</p>
+                        <p class="text-white/90">{{ $bar->purity ?? 'â€”' }}</p>
                     </div>
                     <div class="md:col-span-2">
                         <p class="text-xs tracking-[0.3em] uppercase text-white/40 mb-2">Assigned Owner</p>

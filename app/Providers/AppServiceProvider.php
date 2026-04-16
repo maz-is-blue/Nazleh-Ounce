@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,5 +26,14 @@ class AppServiceProvider extends ServiceProvider
         } catch (\Throwable $e) {
             view()->share('content', \App\Services\ContentService::DEFAULTS);
         }
+
+        View::composer(['marketing.account', 'account.bars.index'], function ($view) {
+            try {
+                $prices = app(\App\Services\MetalPriceService::class)->getLatest();
+                $view->with('metalPrices', $prices);
+            } catch (\Throwable $e) {
+                $view->with('metalPrices', []);
+            }
+        });
     }
 }

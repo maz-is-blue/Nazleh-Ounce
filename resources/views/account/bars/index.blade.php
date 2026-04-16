@@ -1,4 +1,4 @@
-@extends('layouts.marketing')
+ï»¿@extends('layouts.marketing')
 
 @section('content')
     <div class="min-h-screen px-6 py-32">
@@ -7,6 +7,8 @@
                 <h1 class="font-display text-4xl text-primary mb-2">Your Bars</h1>
                 <p class="text-foreground/60">Verified alloys assigned to your account.</p>
             </div>
+            @include('marketing.partials.live-prices')
+
 
             @if ($bars->isEmpty())
                 <div class="text-center py-20">
@@ -29,12 +31,12 @@
                         <tbody>
                             @foreach ($bars as $bar)
                                 <tr class="border-b border-primary/10 hover:bg-primary/5 transition-colors duration-300">
-                                    <td class="px-6 py-4 text-foreground/70">{{ $bar->human_code ?? '—' }}</td>
+                                    <td class="px-6 py-4 text-foreground/70">{{ $bar->human_code ?? 'â€”' }}</td>
                                     <td class="px-6 py-4 font-mono text-sm text-primary">{{ $bar->public_id }}</td>
                                     <td class="px-6 py-4 text-foreground/70">{{ ucfirst($bar->metal_type) }}</td>
                                     <td class="px-6 py-4 text-foreground/70">{{ $bar->weight }}</td>
                                     <td class="px-6 py-4 text-foreground/70">{{ ucfirst($bar->status) }}</td>
-                                    <td class="px-6 py-4 text-foreground/70">{{ optional($bar->sold_at)->format('Y-m-d') ?? '—' }}</td>
+                                    <td class="px-6 py-4 text-foreground/70">{{ optional($bar->sold_at)->format('Y-m-d') ?? 'â€”' }}</td>
                                     <td class="px-6 py-4 text-right">
                                         <a href="{{ route('account.bars.show', $bar->public_id) }}" class="text-primary text-sm tracking-wider">View</a>
                                     </td>
@@ -47,3 +49,4 @@
         </div>
     </div>
 @endsection
+

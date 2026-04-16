@@ -19,12 +19,23 @@
                 <p><strong>Serial Number:</strong> {{ $bar->display_serial ?? 'Pending' }}</p>
                 <p><strong>Metal:</strong> {{ ucfirst($bar->metal_type) }}</p>
                 <p><strong>Weight:</strong> {{ $bar->weight }} g</p>
-                <p><strong>Purity:</strong> {{ $bar->purity ?? '—' }}</p>
+                <p><strong>Purity:</strong> {{ $bar->purity ?? '&mdash;' }}</p>
                 <p><strong>Registered Email:</strong> {{ $user->email }}</p>
-                <p><strong>Registered Phone:</strong> {{ $user->phone ?? '—' }}</p>
-                <p><strong>Registered Location:</strong> {{ $user->location ?? '—' }}</p>
+                <p><strong>Registered Phone:</strong> {{ $user->phone ?? '&mdash;' }}</p>
+                <p><strong>Registered Location:</strong> {{ $user->location ?? '&mdash;' }}</p>
                 <p>You can verify your bar here:</p>
                 <p><a href="{{ route('bar.show', $bar->public_id) }}">View Verification</a></p>
+                @if ($setupUrl)
+                    <hr style="border: none; border-top: 1px solid #e4e4e4; margin: 24px 0;">
+                    <p><strong>Set Up Your Account</strong></p>
+                    <p>Use the link below to set your password and access your collection:</p>
+                    <p>
+                        <a href="{{ $setupUrl }}" style="display: inline-block; padding: 12px 20px; background: #07202A; color: #8BD4E2; text-decoration: none; border: 1px solid #8BD4E2; border-radius: 4px;">
+                            Set Up Your Account
+                        </a>
+                    </p>
+                    <p style="color: #999; font-size: 12px;">This link expires in 60 minutes.</p>
+                @endif
             </td>
         </tr>
     </table>

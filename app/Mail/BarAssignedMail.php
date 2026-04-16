@@ -14,7 +14,7 @@ class BarAssignedMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public function __construct(public Bar $bar, public User $user)
+    public function __construct(public Bar $bar, public User $user, public ?string $setupUrl = null)
     {
     }
 

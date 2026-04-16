@@ -29,6 +29,7 @@
                     </a>
                 </div>
             @else
+                @include('marketing.partials.live-prices')
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     @foreach ($bars as $index => $bar)
                         <div class="backdrop-blur-sm bg-background/40 border border-primary/20 p-8 hover:border-primary/40 transition-all duration-700 reveal" data-reveal data-delay="{{ $index * 120 }}">

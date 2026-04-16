@@ -42,7 +42,7 @@ class AuthenticatedSessionController extends Controller
                     ->withErrors(['email' => 'Admin access only.']);
             }
 
-            return redirect()->to($redirectTo);
+            return redirect()->intended(route('admin.dashboard'));
         }
 
         return redirect()->intended(RouteServiceProvider::HOME);

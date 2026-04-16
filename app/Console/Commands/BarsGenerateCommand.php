@@ -63,34 +63,36 @@ class BarsGenerateCommand extends Command
         $csvHandle = fopen($csvPath, 'w');
         fputcsv($csvHandle, ['public_id', 'qr_url', 'metal_type', 'weight', 'purity']);
 
-        for ($i = 0; $i < $count; $i++) {
-            $bar = Bar::create([
-                'public_id' => (string) Str::ulid(),
-                'human_code_number' => $humanCodeNumbers[$i] ?? null,
-                'human_code_prefix' => $humanCodePrefix,
-                'metal_type' => $metal,
-                'weight' => $weight,
-                'purity' => $purity ?: null,
-                'status' => 'unsold',
-            ]);
+        try {
+            for ($i = 0; $i < $count; $i++) {
+                $bar = Bar::create([
+                    'public_id' => (string) Str::ulid(),
+                    'human_code_number' => $humanCodeNumbers[$i] ?? null,
+                    'human_code_prefix' => $humanCodePrefix,
+                    'metal_type' => $metal,
+                    'weight' => $weight,
+                    'purity' => $purity ?: null,
+                    'status' => 'unsold',
+                ]);
 
-            $qrUrl = rtrim($baseUrl, '/') . '/q/' . $bar->public_id;
-            $fileBaseName = $bar->human_code ?? $bar->public_id;
-            $fileName = $fileBaseName . '.' . $format;
-            $filePath = $outputPath . DIRECTORY_SEPARATOR . $fileName;
+                $qrUrl = rtrim($baseUrl, '/') . '/q/' . $bar->public_id;
+                $fileBaseName = $bar->human_code ?? $bar->public_id;
+                $fileName = $fileBaseName . '.' . $format;
+                $filePath = $outputPath . DIRECTORY_SEPARATOR . $fileName;
 
-            QrCode::format($format)->size(300)->generate($qrUrl, $filePath);
+                QrCode::format($format)->size(300)->generate($qrUrl, $filePath);
 
-            fputcsv($csvHandle, [
-                $bar->public_id,
-                $qrUrl,
-                $bar->metal_type,
-                $bar->weight,
-                $bar->purity,
-            ]);
+                fputcsv($csvHandle, [
+                    $bar->public_id,
+                    $qrUrl,
+                    $bar->metal_type,
+                    $bar->weight,
+                    $bar->purity,
+                ]);
+            }
+        } finally {
+            fclose($csvHandle);
         }
-
-        fclose($csvHandle);
 
         $this->info('Generated ' . $count . ' bars.');
         $this->info('QR base URL: ' . $baseUrl);
