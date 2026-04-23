@@ -282,9 +282,9 @@
                 <p class="text-lg md:text-xl text-white/60 leading-relaxed" style="font-family: var(--font-body); font-weight: 300;">Connect with our team for personalized consultation and expert guidance in precious metal investments.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-16">
-        <a href="mailto:{{ $content['contact']['email'] }}" class="reveal" data-reveal data-delay="100">
-                    <div class="group relative border border-primary/20 p-8 transition-all duration-700 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(139,212,226,0.15)]">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-16 items-stretch">
+        <a href="mailto:{{ $content['contact']['email'] }}" class="flex flex-col reveal" data-reveal data-delay="100">
+                    <div class="group relative flex flex-col flex-1 border border-primary/20 p-8 transition-all duration-700 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(139,212,226,0.15)]">
                         <div class="mb-6 relative inline-block">
                             <div class="absolute inset-0 bg-primary/20 blur-xl transition-all duration-700 group-hover:bg-primary/40"></div>
                             <div class="relative w-12 h-12 flex items-center justify-center">
@@ -297,8 +297,8 @@
                   <div class="text-lg text-white transition-colors duration-500 group-hover:text-primary" style="font-family: var(--font-body); font-weight: 300;">{{ $content['contact']['email'] }}</div>
                     </div>
                 </a>
-                <a href="tel:{{ preg_replace('/\\D+/', '', $content['contact']['phone']) }}" class="reveal" data-reveal data-delay="220">
-                    <div class="group relative border border-primary/20 p-8 transition-all duration-700 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(139,212,226,0.15)]">
+                <a href="tel:{{ preg_replace('/\\D+/', '', $content['contact']['phone']) }}" class="flex flex-col reveal" data-reveal data-delay="220">
+                    <div class="group relative flex flex-col flex-1 border border-primary/20 p-8 transition-all duration-700 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(139,212,226,0.15)]">
                         <div class="mb-6 relative inline-block">
                             <div class="absolute inset-0 bg-primary/20 blur-xl transition-all duration-700 group-hover:bg-primary/40"></div>
                             <div class="relative w-12 h-12 flex items-center justify-center">
@@ -311,8 +311,8 @@
                         <div class="text-lg text-white transition-colors duration-500 group-hover:text-primary" style="font-family: var(--font-body); font-weight: 300;">{{ $content['contact']['phone'] }}</div>
                     </div>
                 </a>
-                <div class="reveal" data-reveal data-delay="320">
-                    <div class="group relative border border-primary/20 p-8 transition-all duration-700 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(139,212,226,0.15)]">
+                <div class="flex flex-col reveal" data-reveal data-delay="320">
+                    <div class="group relative flex flex-col flex-1 border border-primary/20 p-8 transition-all duration-700 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(139,212,226,0.15)]">
                         <div class="mb-6 relative inline-block">
                             <div class="absolute inset-0 bg-primary/20 blur-xl transition-all duration-700 group-hover:bg-primary/40"></div>
                             <div class="relative w-12 h-12 flex items-center justify-center">
