@@ -10,9 +10,9 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-                <a href="mailto:{{ $content['contact']['email'] }}" class="block reveal" data-reveal data-delay="100">
-                    <div class="group relative">
-                        <div class="relative border border-primary/20 p-8 md:p-10 transition-all duration-700 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(139,212,226,0.15)]">
+                <a href="mailto:{{ $content['contact']['email'] }}" class="block h-full reveal" data-reveal data-delay="100">
+                    <div class="group relative h-full">
+                        <div class="relative h-full border border-primary/20 p-8 md:p-10 transition-all duration-700 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(139,212,226,0.15)]">
                             <div class="mb-6 flex justify-center">
                                 <div class="w-12 h-12 flex items-center justify-center border border-primary/30 transition-all duration-700 group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(139,212,226,0.3)]">
                                     <svg class="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -26,9 +26,9 @@
                         </div>
                     </div>
                 </a>
-                <a href="tel:{{ preg_replace('/\\D+/', '', $content['contact']['phone']) }}" class="block reveal" data-reveal data-delay="220">
-                    <div class="group relative">
-                        <div class="relative border border-primary/20 p-8 md:p-10 transition-all duration-700 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(139,212,226,0.15)]">
+                <a href="tel:{{ preg_replace('/\\D+/', '', $content['contact']['phone']) }}" class="block h-full reveal" data-reveal data-delay="220">
+                    <div class="group relative h-full">
+                        <div class="relative h-full border border-primary/20 p-8 md:p-10 transition-all duration-700 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(139,212,226,0.15)]">
                             <div class="mb-6 flex justify-center">
                                 <div class="w-12 h-12 flex items-center justify-center border border-primary/30 transition-all duration-700 group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(139,212,226,0.3)]">
                                     <svg class="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -42,9 +42,9 @@
                         </div>
                     </div>
                 </a>
-                <div class="reveal" data-reveal data-delay="340">
-                    <div class="group relative">
-                        <div class="relative border border-primary/20 p-8 md:p-10 transition-all duration-700 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(139,212,226,0.15)]">
+                <div class="reveal h-full" data-reveal data-delay="340">
+                    <div class="group relative h-full">
+                        <div class="relative h-full border border-primary/20 p-8 md:p-10 transition-all duration-700 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(139,212,226,0.15)]">
                             <div class="mb-6 flex justify-center">
                                 <div class="w-12 h-12 flex items-center justify-center border border-primary/30 transition-all duration-700 group-hover:border-primary group-hover:shadow-[0_0_20px_rgba(139,212,226,0.3)]">
                                     <svg class="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
