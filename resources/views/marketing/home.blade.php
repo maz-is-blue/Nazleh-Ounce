@@ -250,13 +250,7 @@
                             <div class="absolute inset-0 bg-primary/20 blur-xl transition-all duration-700 group-hover:bg-primary/40"></div>
                             <div class="relative w-16 h-16 flex items-center justify-center border border-primary/30 transition-all duration-700 group-hover:border-primary group-hover:shadow-[0_0_30px_rgba(139,212,226,0.3)]">
                                 <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path d="M12 4a4 4 0 0 0-4 4v3"></path>
-                                    <path d="M12 4a4 4 0 0 1 4 4v1"></path>
-                                    <path d="M8 17a4 4 0 0 0 8 0v-1"></path>
-                                    <path d="M8 11v6"></path>
-                                    <path d="M16 9v8"></path>
-                                    <path d="M12 12v6"></path>
-                                    <path d="M6 20h12"></path>
+                                    <path d="M7.864 4.243A7.5 7.5 0 0119.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 004.5 10.5a7.464 7.464 0 01-1.15 3.993m1.989 3.559A11.209 11.209 0 008.25 10.5a3.75 3.75 0 117.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 01-3.6 9.75m6.633-4.596a18.666 18.666 0 01-2.485 5.33"/>
                                 </svg>
                             </div>
                         </div>
@@ -294,7 +288,9 @@
                         <div class="mb-6 relative inline-block">
                             <div class="absolute inset-0 bg-primary/20 blur-xl transition-all duration-700 group-hover:bg-primary/40"></div>
                             <div class="relative w-12 h-12 flex items-center justify-center">
-                                <span class="w-6 h-6 text-primary">@</span>
+                                <svg class="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
+                                </svg>
                             </div>
                         </div>
                         <div class="text-xs tracking-[0.3em] uppercase text-white/40 mb-3" style="font-family: var(--font-body); font-weight: 400;">Email</div>
@@ -306,7 +302,9 @@
                         <div class="mb-6 relative inline-block">
                             <div class="absolute inset-0 bg-primary/20 blur-xl transition-all duration-700 group-hover:bg-primary/40"></div>
                             <div class="relative w-12 h-12 flex items-center justify-center">
-                                <span class="w-6 h-6 text-primary">&#x260E;</span>
+                                <svg class="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+                                </svg>
                             </div>
                         </div>
                         <div class="text-xs tracking-[0.3em] uppercase text-white/40 mb-3" style="font-family: var(--font-body); font-weight: 400;">Phone</div>
@@ -318,7 +316,10 @@
                         <div class="mb-6 relative inline-block">
                             <div class="absolute inset-0 bg-primary/20 blur-xl transition-all duration-700 group-hover:bg-primary/40"></div>
                             <div class="relative w-12 h-12 flex items-center justify-center">
-                                <span class="w-6 h-6 text-primary">&#x2609;</span>
+                                <svg class="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
+                                </svg>
                             </div>
                         </div>
                         <div class="text-xs tracking-[0.3em] uppercase text-white/40 mb-3" style="font-family: var(--font-body); font-weight: 400;">Location</div>
