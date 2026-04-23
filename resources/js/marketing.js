@@ -13,7 +13,7 @@ const setupPageLoader = () => {
     setTimeout(() => loader.remove(), 900);
   };
 
-  setTimeout(hideLoader, prefersReducedMotion ? 300 : 2500);
+  setTimeout(hideLoader, prefersReducedMotion ? 200 : 1000);
 };
 
 const setupNav = () => {
